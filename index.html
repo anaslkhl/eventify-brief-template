@@ -17,22 +17,22 @@
 
             <nav class="sidebar__nav">
                 <!-- Screen buttons (students will add JS to handle click + switch screens) -->
-                <button class="sidebar__btn is-active" data-screen="stats">
+                <button class="sidebar__btn is-active" data-screen="stats"  onclick="switch_screen(this)">
                     <span class="sidebar__icon">📊</span>
                     <span class="sidebar__label">Statistics</span>
                 </button>
 
-                <button class="sidebar__btn" data-screen="add">
+                <button class="sidebar__btn" data-screen="add" onclick="switch_screen(this)">
                     <span class="sidebar__icon">➕</span>
                     <span class="sidebar__label">Add Event</span>
                 </button>
 
-                <button class="sidebar__btn" data-screen="list">
+                <button class="sidebar__btn" data-screen="list" onclick="switch_screen(this)">
                     <span class="sidebar__icon">📋</span>
                     <span class="sidebar__label">Events</span>
                 </button>
 
-                <button class="sidebar__btn" data-screen="archive">
+                <button class="sidebar__btn" data-screen="archive" onclick="switch_screen(this)">
                     <span class="sidebar__icon">🗄️</span>
                     <span class="sidebar__label">Archive</span>
                 </button>
@@ -86,7 +86,7 @@
 
                 <!-- SCREEN 2: Add Event -->
                 <section class="screen" data-screen="add">
-                    <div class="screen__content">
+                 <div class="screen__content">
                         <form class="form" id="event-form">
                             <!-- Error messages area -->
                             <div class="alert alert--error is-hidden" id="form-errors"></div>
@@ -98,7 +98,9 @@
                                     type="text" 
                                     id="event-title" 
                                     class="input" 
+                                    pattern=/^([a-zA-Z]\s)$/
                                     placeholder="Enter event title"
+                                   
                                     required
                                 >
                             </div>
@@ -107,9 +109,10 @@
                             <div class="form__group">
                                 <label class="form__label" for="event-image">Image URL</label>
                                 <input 
-                                    type="url" 
+                                    type="text" 
                                     id="event-image" 
                                     class="input" 
+                                    pattern="/^([])"
                                     placeholder="https://example.com/image.jpg"
                                 >
                             </div>
@@ -121,6 +124,7 @@
                                     id="event-description" 
                                     class="input" 
                                     placeholder="Describe the event..."
+                                   
                                     rows="4"
                                 ></textarea>
                             </div>
@@ -133,7 +137,7 @@
                                     id="event-seats" 
                                     class="input" 
                                     placeholder="100"
-                                    min="1"
+                                    
                                     required
                                 >
                             </div>
@@ -146,6 +150,7 @@
                                     id="event-price" 
                                     class="input" 
                                     placeholder="50.00"
+                                   
                                     min="0"
                                     step="0.01"
                                     required
@@ -313,5 +318,6 @@
 
     const sampleArchive = [];
     -->
+    <script src="script.js"></script>
 </body>
 </html>
