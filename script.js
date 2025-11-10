@@ -1,14 +1,12 @@
 
 
-
-
-
 let archive = [];
 let btnstats = document.querySelectorAll('.sidebar__btn')
 let screen = document.querySelectorAll(".screen");
 
 
 //the function of switching between screens//
+
 
 function switch_screen(key) {
     const targetone = key.dataset.screen
@@ -23,7 +21,6 @@ function switch_screen(key) {
         key.classList.add("is-active")
     });
 }
-
 
 //Add an event for adding the events//
 
@@ -88,21 +85,4 @@ form.addEventListener('submit', e => {
     nextId++
     form.reset()
 });
-
-
-
-function ToArchive() {
-    
-}
-
-
-
-
-
-
-
-
-
-
-
 
