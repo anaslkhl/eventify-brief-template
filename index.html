@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events Management App</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="app">
         <!-- SIDEBAR -->
@@ -17,7 +19,7 @@
 
             <nav class="sidebar__nav">
                 <!-- Screen buttons (students will add JS to handle click + switch screens) -->
-                <button class="sidebar__btn is-active" data-screen="stats"  onclick="switch_screen(this)">
+                <button class="sidebar__btn is-active" data-screen="stats" onclick="switch_screen(this)">
                     <span class="sidebar__icon">📊</span>
                     <span class="sidebar__label">Statistics</span>
                 </button>
@@ -55,7 +57,7 @@
 
             <!-- SCREENS (only one visible at a time) -->
             <div class="screens">
-                
+
                 <!-- SCREEN 1: Statistics (DEFAULT) -->
                 <section class="screen is-visible" data-screen="stats">
                     <div class="screen__content">
@@ -86,7 +88,7 @@
 
                 <!-- SCREEN 2: Add Event -->
                 <section class="screen" data-screen="add">
-                 <div class="screen__content">
+                    <div class="screen__content">
                         <form class="form" id="event-form">
                             <!-- Error messages area -->
                             <div class="alert alert--error is-hidden" id="form-errors"></div>
@@ -94,76 +96,45 @@
                             <!-- Title -->
                             <div class="form__group">
                                 <label class="form__label" for="event-title">Event Title</label>
-                                <input 
-                                    type="text" 
-                                    id="event-title" 
-                                    class="input" 
-                                    pattern=/^([a-zA-Z]\s)$/
-                                    placeholder="Enter event title"
-                                   
-                                    required
-                                >
+                                <input type="text" id="event-title" class="input" placeholder="Enter event title"
+                                    required>
                             </div>
 
                             <!-- Image URL -->
                             <div class="form__group">
                                 <label class="form__label" for="event-image">Image URL</label>
-                                <input 
-                                    type="text" 
-                                    id="event-image" 
-                                    class="input" 
-                                    pattern="/^([])"
-                                    placeholder="https://example.com/image.jpg"
-                                >
+                                <input type="text" id="event-image" class="input"
+                                    placeholder="https://example.com/image.jpg">
                             </div>
 
                             <!-- Description -->
                             <div class="form__group">
                                 <label class="form__label" for="event-description">Description</label>
-                                <textarea 
-                                    id="event-description" 
-                                    class="input" 
-                                    placeholder="Describe the event..."
-                                   
-                                    rows="4"
-                                ></textarea>
+                                <textarea id="event-description" class="input" placeholder="Describe the event..."
+                                    rows="4"></textarea>
                             </div>
 
                             <!-- Seats -->
                             <div class="form__group">
                                 <label class="form__label" for="event-seats">Number of Seats</label>
-                                <input 
-                                    type="number" 
-                                    id="event-seats" 
-                                    class="input" 
-                                    placeholder="100"
-                                    
-                                    required
-                                >
+                                <input type="number" id="event-seats" class="input" placeholder="100" required>
                             </div>
 
                             <!-- Base Price -->
                             <div class="form__group">
                                 <label class="form__label" for="event-price">Base Price ($)</label>
-                                <input 
-                                    type="number" 
-                                    id="event-price" 
-                                    class="input" 
-                                    placeholder="50.00"
-                                   
-                                    min="0"
-                                    step="0.01"
-                                    required
-                                >
+                                <input type="number" id="event-price" class="input" placeholder="50.00" min="0"
+                                    step="0.01" required>
                             </div>
 
                             <!-- VARIANTS SECTION -->
                             <fieldset class="variants">
                                 <legend class="variants__title">
                                     Pricing Variants (Optional)
-                                    <button type="button" class="btn btn--small" id="btn-add-variant">+ Add Variant</button>
+                                    <button type="button" class="btn btn--small" id="btn-add-variant">+ Add
+                                        Variant</button>
                                 </legend>
-                                
+
                                 <!-- Variant rows will be appended here by JS -->
                                 <div id="variants-list" class="variants__list">
                                     <!-- EXAMPLE: Students should clone this structure -->
@@ -196,12 +167,8 @@
                     <div class="screen__content">
                         <!-- Search & Sort Controls -->
                         <div class="controls">
-                            <input 
-                                type="text" 
-                                id="search-events" 
-                                class="input" 
-                                placeholder="🔍 Search events by title..."
-                            >
+                            <input type="text" id="search-events" class="input"
+                                placeholder="🔍 Search events by title...">
                             <select id="sort-events" class="select">
                                 <option value="title-asc">Sort: Title (A-Z)</option>
                                 <option value="title-desc">Sort: Title (Z-A)</option>
@@ -224,21 +191,9 @@
                                 </tr>
                             </thead>
                             <tbody class="table__body">
-                                <!-- EXAMPLE: Students will populate this with JS -->
-                                <!-- 
-                                <tr class="table__row" data-event-id="1">
-                                    <td>1</td>
-                                    <td>Summer Festival</td>
-                                    <td>100</td>
-                                    <td>$49.99</td>
-                                    <td><span class="badge">3</span></td>
-                                    <td>
-                                        <button class="btn btn--small" data-action="details" data-event-id="1">Details</button>
-                                        <button class="btn btn--small" data-action="edit" data-event-id="1">Edit</button>
-                                        <button class="btn btn--danger btn--small" data-action="archive" data-event-id="1">Delete</button>
-                                    </td>
-                                </tr>
-                                -->
+                               
+
+
                             </tbody>
                         </table>
 
@@ -320,4 +275,5 @@
     -->
     <script src="script.js"></script>
 </body>
+
 </html>
