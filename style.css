@@ -410,6 +410,7 @@ textarea.input {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
+  list-style: none;
 }
 
 .variant-row {
@@ -419,14 +420,13 @@ textarea.input {
   align-items: flex-end;
 }
 
-/* .variant-row__name,
+.variant-row__name,
 .variant-row__qty,
 .variant-row__value,
 .variant-row__type,
 .variant-row__remove {
-  
-} */
-/* inherit styles from .input, .select, .btn */
+  /* inherit styles from .input, .select, .btn */
+}
 
 @media (max-width: 768px) {
   .variant-row {
