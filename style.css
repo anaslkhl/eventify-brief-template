@@ -410,6 +410,7 @@ textarea.input {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
+  list-style: none;
 }
 
 .variant-row {
