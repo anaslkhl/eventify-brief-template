@@ -81,9 +81,72 @@
 
                         <!-- Placeholder for chart (students can add Chart.js or similar) -->
                         <div class="chart-placeholder">
-                            <p class="text-muted">📈 Chart will be rendered here by JavaScript</p>
+                            <!-- <p class="text-muted">📈 Chart will be rendered here by JavaScript</p> -->
+                        <div class="chart">
+                            <div class="bar" style="height: 120px;"><span>120</span></div>
+                            <div class="bar" style="height: 190px;"><span>190</span></div>
+                            <div class="bar" style="height: 300px;"><span>300</span></div>
+                            <div class="bar" style="height: 250px;"><span>250</span></div>
+                            <div class="bar" style="height: 220px;"><span>220</span></div>
+                            <div class="bar" style="height: 400px;"><span>400</span></div>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-around; max-width: 700px; margin: 10px auto;">
+                            <div class="label">Jan</div>
+                            <div class="label">Feb</div>
+                            <div class="label">Mar</div>
+                            <div class="label">Apr</div>
+                            <div class="label">May</div>
+                            <div class="label">Jun</div>
+                        </div>
+                        </body>
                         </div>
                     </div>
+                     <style>
+
+    .chart {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      height: 330px;
+      max-width: 700px;
+      margin: 0 auto;
+      border-left: 2px solid #94a3b8;
+      border-bottom: 2px solid #94a3b8;
+      padding: 20px;
+      gap: 15px;
+    }
+
+    .bar {
+      width: 60px;
+      background: linear-gradient(180deg, #4f46e5, #6366f1);
+      border-radius: 6px 6px 0 0;
+      text-align: center;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    .bar:hover {
+      background: linear-gradient(180deg, #1e3a8a, #4338ca);
+      transform: scale(1.05);
+    }
+
+    .bar span {
+      position: absolute;
+      right: 4px;
+      top: -25px;
+      width: 100%;
+      font-weight: 600;
+      color: #1e3a8a;
+    }
+
+    .label {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  </style>
                 </section>
 
                 <!-- SCREEN 2: Add Event -->

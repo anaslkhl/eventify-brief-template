@@ -1,3 +1,8 @@
+.list-group-item {
+  padding: 15px;
+  width: 30vw;
+}
+
 /* ============================================
    CSS VARIABLES & ROOT
    ============================================ */
@@ -35,7 +40,8 @@
   --shadow-lg: 0 4px 16px var(--color-shadow);
 
   /* Fonts */
-  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
   --font-mono: "Courier New", monospace;
 
   /* Z-index */
