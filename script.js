@@ -499,10 +499,15 @@ function ShowVariants(ky) {
   // console.log(variantev);
   variant_row.classList.remove("is-hidden");
   // localStorage.setItem("variantev", JSON.stringify(variantev));
-}
+} 
 let variant_row = document.querySelector("#event-modal");
 let modal__close = document.querySelector(".modal__close");
 
 modal__close.addEventListener("click", () => {
   variant_row.classList.add("is-hidden");
 });
+
+
+
+
+//ssjncwkj//
