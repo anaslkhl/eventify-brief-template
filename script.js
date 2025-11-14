@@ -145,8 +145,9 @@ function TableShow() {
         }" onclick="ShowVariants(this)">Details</button>
         <button class="btn btn--small" data-action="edit" data-event-id="${
           ev.id
-        }">Edit</button>
-        <button class="btn btn--danger btn--small" data-action="archive" data-event-id="${
+        }" onclick="eventEdit(this)">Edit</button>
+        <button class="btn btn--danger btn--small" data-action="archive"
+        id="editbtn" data-event-id="${
           ev.id
         }" onclick="deleteevent(this)">Delete</button>
       </td>
@@ -164,6 +165,74 @@ table_archive.addEventListener("click", Show_Archive);
 
 var ee;
 
+function eventEdit(ky) {
+
+  let events = JSON.parse(localStorage.getItem("events"));
+  let key = ky.dataset.eventId;
+
+  function getTarget() {
+    for (let i = 0; i < events.length; i++) {
+      if (events[i].id == key) {
+        console.log(i, "i");
+        return i;
+      }
+    }
+  }
+
+  let targeet = getTarget();
+  console.log(targeet, "target");
+
+  let editShow = document.querySelector(".editShow");
+  editShow.classList.remove("is-hidden");
+  let scshow = document.querySelector("#scshow");
+  scshow.classList.remove("is-visible");
+  
+  console.log(key.title);
+  console.log(key, "key");
+  // let descc = document.querySelector('#description1')
+
+  // descc.value = events[targeet].description;
+
+  editShow.innerHTML = `
+  <form id="itemForm">
+  
+  <label for="title">tittle</label>
+  <input type="text" id="title" name="title" placeholder="Enter title" value="${events[targeet].title}" required>
+  
+  <label for="image">url image</label>
+  <input type="url" id="image" name="image" placeholder="https://example.com/image.jpg" value="${events[targeet].image}" required>
+  
+  <label for="description">Description</label>
+  <textarea id="description1" name="description" rows="4" placeholder="Enter description" required>${events[targeet].description}</textarea>
+  
+  <label for="seats">seats</label>
+  <input type="number" id="seats" name="seats" min="1" placeholder="e.g. 4" value="${events[targeet].seat}" required>
+  
+  <label for="price">Price($)</label>
+  <input type="number" id="price" name="price" min="0" step="0.01" placeholder="e.g. 199.99" value="${events[targeet].price}" required>
+  
+  <button type="submit" id="edsubmit">Submit</button>
+  
+  </form>`;
+
+  let itemForm = document.querySelector("#itemForm");
+  itemForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let edtitle = document.querySelector("#title").value.trim();
+    let eddescription = document.querySelector("#description1").value.trim();
+    let edseat = document.querySelector("#seats").value.trim();
+    let edprice = document.querySelector("#price").value.trim();
+    events[targeet].title = edtitle;
+    events[targeet].description= eddescription;
+    events[targeet].seat = edseat;
+    events[targeet].price = edprice;
+    localStorage.setItem("events", JSON.stringify(events));
+    scshow.classList.add("is-visible");
+    editShow.classList.add("is-hidden")
+    itemForm.reset()
+    TableShow();
+  });
+}
 // This function for searching about an event //
 
 function eventSearch() {
@@ -200,11 +269,16 @@ function sortby() {
     case "price-asc":
       LowToHigh();
       break;
+    case "title-asc":
+      AtoZsort();
+      break;
+    case "title-desc":
+      ZtoAsort();
+      break;
   }
-  console.log("comee");
 }
 
-// A function to sort an array //
+// A function to sort an array by price from high to low//
 
 function sortingEvents() {
   let events = JSON.parse(localStorage.getItem("events"));
@@ -220,6 +294,8 @@ function sortingEvents() {
   localStorage.setItem("events", JSON.stringify(events));
   TableShow();
 }
+
+// A function to sort an array by price from low to high//
 
 function LowToHigh() {
   let events = JSON.parse(localStorage.getItem("events"));
@@ -237,22 +313,62 @@ function LowToHigh() {
   TableShow();
 }
 
+// A function to sort an array by seats from low to high//
+
 function LowToHighseats() {
-    let events = JSON.parse(localStorage.getItem("events"));
-    console.log("lh");
-    for (let i = 0; i < events.length - 1; i++) {
-      for (let x = 0; x < events.length - i - 1; x++) {
-        if (events[x].seat > events[x + 1].seat) {
-          let temp = events[x + 1];
-          events[x + 1] = events[x];
-          events[x] = temp;
-        }
-        console.log("come in")
+  let events = JSON.parse(localStorage.getItem("events"));
+  console.log("lh");
+  for (let i = 0; i < events.length - 1; i++) {
+    for (let x = 0; x < events.length - i - 1; x++) {
+      if (events[x].seat > events[x + 1].seat) {
+        let temp = events[x + 1];
+        events[x + 1] = events[x];
+        events[x] = temp;
       }
+      console.log("come in");
     }
-    localStorage.setItem("events", JSON.stringify(events));
-    TableShow();
   }
+  localStorage.setItem("events", JSON.stringify(events));
+  TableShow();
+}
+
+// A function to sort an array by title from low to high//
+
+function AtoZsort() {
+  let events = JSON.parse(localStorage.getItem("events"));
+  console.log("lh");
+  for (let i = 0; i < events.length - 1; i++) {
+    for (let x = 0; x < events.length - i - 1; x++) {
+      if (events[x].title > events[x + 1].title) {
+        let temp = events[x + 1];
+        events[x + 1] = events[x];
+        events[x] = temp;
+      }
+      console.log("come in");
+    }
+  }
+  localStorage.setItem("events", JSON.stringify(events));
+  TableShow();
+}
+
+// A function to sort an array by title from high to low//
+
+function ZtoAsort() {
+  let events = JSON.parse(localStorage.getItem("events"));
+  console.log("lh");
+  for (let i = 0; i < events.length - 1; i++) {
+    for (let x = 0; x < events.length - i - 1; x++) {
+      if (events[x].title < events[x + 1].title) {
+        let temp = events[x + 1];
+        events[x + 1] = events[x];
+        events[x] = temp;
+      }
+      console.log("come in");
+    }
+  }
+  localStorage.setItem("events", JSON.stringify(events));
+  TableShow();
+}
 // let archive = JSON.parse(localStorage.getItem("archive")) || [];
 // git restore --source old-branch  //
 // let archivetable = document.querySelector(".archive .table__body");

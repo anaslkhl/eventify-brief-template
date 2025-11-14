@@ -226,7 +226,7 @@
                 </section>
 
                 <!-- SCREEN 3: Events List -->
-                <section class="screen" data-screen="list">
+                <section class="screen" data-screen="list" id="scshow">
                     <div class="screen__content">
                         <!-- Search & Sort Controls -->
                         <div class="controls">
@@ -266,6 +266,49 @@
                         </div>
                     </div>
                 </section>
+                <!-- <section class="editShow" style="display: none;"></section> -->
+                <div class="editShow is-hidden"></div>
+                <style>
+.editShow {
+    width: 90%;
+    max-width: 500px;
+    background: #ffffff;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input, textarea, button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    margin-top: 20px;
+    background: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background: #45a049;
+}
+                </style>
 
                 <!-- SCREEN 4: Archive -->
                 <section class="screen" data-screen="archive">
